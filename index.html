@@ -9,20 +9,51 @@
 <body>
   <header>
     <div class="container">
-      <img src="logo.png" alt="Harvey & Associates Logo" class="logo" />
-      <nav>
-        <ul>
-          <li><a href="#home">Home</a></li>
-          <li><a href="#about">About</a></li>
-          <li><a href="#services">Services</a></li>
-          <li><a href="#resources">Resources</a></li>
-          <li><a href="#schedule">Schedule</a></li>
-          <li><a href="#contact">Contact</a></li>
-          <li><a target="_blank" rel="noopener" href="https://brokercheck.finra.org/">BrokerCheck</a></li>
-        </ul>
-      </nav>
+    <img src="logo.png" alt="Harvey & Associates" class="logo" />
+ <nav>
+  <button class="menu-toggle" onclick="toggleMenu()">☰</button>
+  <ul id="nav-menu">
+    <li><a href="#home">Home</a></li>
+    <li><a href="#about">About</a></li>
+    <li><a href="#services">Services</a></li>
+
+    <!-- Mobile-friendly dropdown -->
+    <li class="dropdown">
+      <a href="javascript:void(0);" onclick="toggleDropdown()">Resources ▾</a>
+      <ul id="resourcesDropdown" class="dropdown-content">
+        <li><a target="_blank" rel="noopener" href="https://therealhowmoneyworks.com/us/tmharvey/">How Money Works</a></li>
+      </ul>
+    </li>
+    <li><a href="#schedule-contact">Contact</a></li>
+    <li><a target="_blank" rel="noopener" href="https://brokercheck.finra.org/">BrokerCheck</a></li>
+  </ul>
+</nav>
     </div>
   </header>
+  
+ <script>
+  function toggleMenu() {
+    document.getElementById('nav-menu').classList.toggle('show-menu');
+  }
+
+  function toggleDropdown() {
+    document.getElementById('resourcesDropdown').classList.toggle('show');
+  }
+
+  // Close dropdown and nav when clicking outside
+  window.onclick = function(event) {
+    if (!event.target.closest('nav')) {
+      const dropdown = document.getElementById('resourcesDropdown');
+      const navMenu = document.getElementById('nav-menu');
+      if (dropdown && dropdown.classList.contains('show')) {
+        dropdown.classList.remove('show');
+      }
+      if (navMenu && navMenu.classList.contains('show-menu')) {
+        navMenu.classList.remove('show-menu');
+      }
+    }
+  }
+</script>
 
   <section id="home" class="hero">
     <div class="container">
@@ -34,7 +65,7 @@
   <section id="about" class="section">
     <div class="container">
       <h2>About Us</h2>
-      <p>Harvey & Associates is dedicated to empowering individuals and families to achieve financial success. We manage our own personal finances using the same proven principles we offer to our clients, ensuring that our guidance is based on practical, hands-on experience. Our commitment to financial education is at the core of our approach—we strive to equip you with the knowledge needed to make confident, informed decisions about your financial future. For business leaders, we provide comprehensive leadership development through mentorship, coaching, and influence, helping you transform not only your own life but also the lives of your family and community.</p>
+      <p>Harvey & Associates is dedicated to empowering individuals and families to achieve financial success. We manage our own personal finances using the same proven principles we offer to our clients, ensuring that our guidance is based on practical, hands-on experience. Our commitment to financial education is at the core of our approach—we strive to equip you with the knowledge needed to make confident, informed decisions about your financial future.</p>
     </div>
   </section>
 
@@ -49,26 +80,18 @@
       </ul>
     </div>
   </section>
-
-  <section id="resources" class="section">
-    <div class="container">
-      <h2>Resources</h2>
-      <p>We provide calculators, checklists, and downloadable guides to empower your financial journey. Check back regularly for new tools and updates.</p>
-    </div>
-  </section>
-
   
   <section id="schedule-contact" class="section">
     <div class="container side-by-side">
       <div class="panel">
-        <h2>Schedule Appointment</h2>
+        <h2>Request an Appointment</h2>
         <div style="overflow:auto">
           <iframe src="https://scheduler.zoom.us/harveyt/call?embed=true" frameborder="0" style="width: 100%; min-height: 560px;"></iframe>
         </div>
       </div>
       <div class="panel">
         <h2>Contact Us Today</h2>
-        <p>Email us at: <a href="mailto:contact@harveyassociates.org">contact@harveyassociates.org</a></p>
+        <p>Email us at: <a href="mailto:harveytm@harveyassociates.org">contact@harveyassociates.org</a></p>
         <p>Or use our form below:</p>
         <form action="#" method="POST">
           <input type="text" name="name" placeholder="Your Name" required />
